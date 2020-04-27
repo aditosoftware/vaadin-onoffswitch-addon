@@ -10,6 +10,7 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
@@ -33,12 +34,17 @@ public class DemoUI extends UI
             System.out.println("OnOffSwitch checked : " + checked);
         });
 
+        onOffSwitch.addFocusListener(event -> System.out.println("FOCUS"));
+
+        Button toggle = new Button();
+        toggle.addClickListener(event -> onOffSwitch.setValue(!onOffSwitch.getValue()));
+
         final VerticalLayout layout = new VerticalLayout();
         layout.setSizeFull();
         layout.addComponent(onOffSwitch);
+        layout.addComponent(toggle);
         layout.setComponentAlignment(onOffSwitch, Alignment.MIDDLE_CENTER);
         setContent(layout);
-
     }
 
 }
