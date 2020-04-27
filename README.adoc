@@ -14,7 +14,7 @@ image::data/screenshot/onoffswitch-demo.jpg[]
 [source,xml,indent=0]
 ----
 <dependency>
-	<groupId>com.vaadin.addon</groupId>
+	<groupId>de.adito.vaadin.addon</groupId>
 	<artifactId>vaadin-onoffswitch</artifactId>
 	<version>${project.version}</version>
 </dependency>
@@ -94,7 +94,7 @@ requires Maven 3.3.9+
 
 requires Tomcat 8.0.36+
 
-requires Eclipse Mars.2 4.5.2+ 
+requires Eclipse Mars.2 4.5.2+
 
 requires Vaadin Framework 7.7.3+
 

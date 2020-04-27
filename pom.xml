@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.vaadin.addon</groupId>
+	<groupId>de.adito.vaadin.addon</groupId>
 	<artifactId>onoffswitch-root</artifactId>
 	<packaging>pom</packaging>
-	<version>1.1.0</version>
+	<version>1.2.0</version>
 	<name>OnOffSwitch Add-on Root Project</name>
 
 	<modules>
@@ -20,7 +20,7 @@
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
-			
+
 			<repositories>
 				<repository>
 					<id>vaadin-prereleases</id>
@@ -35,5 +35,4 @@
 			</pluginRepositories>
 		</profile>
 	</profiles>
-
 </project>

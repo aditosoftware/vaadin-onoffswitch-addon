@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.vaadin.addon</groupId>
+	<groupId>de.adito.vaadin.addon</groupId>
 	<artifactId>vaadin-onoffswitch</artifactId>
 	<packaging>jar</packaging>
-	<version>1.1.0</version>
+	<version>1.2.0</version>
 	<name>OnOffSwitch</name>
 
 	<properties>
@@ -23,6 +23,20 @@
 		<Vaadin-License-Title>Apache License 2.0</Vaadin-License-Title>
 		<Vaadin-Addon>${project.artifactId}-${project.version}.jar</Vaadin-Addon>
 	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>adito.m2</id>
+			<name>releases</name>
+			<url>${repository.releases}</url>
+		</repository>
+		<snapshotRepository>
+			<id>adito.m2</id>
+			<name>snapshots</name>
+			<url>${repository.snapshots}</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
 
     <!--
 	<organization>
