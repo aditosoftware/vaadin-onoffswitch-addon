@@ -32,8 +32,8 @@ public class OnOffSwitch extends AbstractField<Boolean> implements FieldEvents.F
   public OnOffSwitch () {
     registerRpc(serverRpc); // 서버 RPC Receiver 등록
 
-		// Register FocusAndBlur RPC to receive the events.
-		registerRpc(new FieldEvents.FocusAndBlurServerRpcDecorator(this, this::fireEvent));
+    // Register FocusAndBlur RPC to receive the events.
+    registerRpc(new FieldEvents.FocusAndBlurServerRpcDecorator(this, this::fireEvent));
     setValue(Boolean.FALSE);
   }
 
