@@ -12,17 +12,17 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<vaadin.version>8.0.6</vaadin.version>
-		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
-		<jetty.plugin.version>9.2.3.v20140905</jetty.plugin.version>
+		<vaadin.version>8.9.4</vaadin.version>
+		<vaadin.plugin.version>8.9.4</vaadin.plugin.version>
+		<jetty.plugin.version>9.3.9.v20160517</jetty.plugin.version>
 	</properties>
 
-    <!--     
+    <!--
 	<organization>
 		<name>My Name</name>
 		<url>https://github.com/mygithubaccount/OnOffSwitch/</url>
 	</organization>
-    
+
 	<scm>
 		<url>git://github.com/mygithubaccount/OnOffSwitch.git</url>
 		<connection>scm:git:git://github.com/mygithubaccount/OnOffSwitch.git</connection>
@@ -115,59 +115,18 @@
 
 	<build>
 		<plugins>
-
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.0</version>
-			</plugin>
-
-			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.4.1</version>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.0.0</version>
 				<configuration>
-					<filesets>
-						<fileset>
-							<!-- Clean-up widgetset required for "inplace" compilation -->
-							<directory>${basedir}/src/main/webapp/VAADIN/widgetsets</directory>
-						</fileset>
-						<fileset>
-							<!-- Clean-up gwt cache -->
-							<directory>${basedir}/src/main/webapp/VAADIN/gwt-unitCache</directory>
-						</fileset>
-					</filesets>
-				</configuration>
-			</plugin>
-
-			<plugin>
-		        <artifactId>maven-war-plugin</artifactId>
-		        <version>2.3</version>
-		        <configuration>
-		        	<packagingExcludes>
-						**/VAADIN/gwt-unitCache/**,
-						**/VAADIN/widgetsets/WEB-INF/**,
-						**/WEB-INF/classes/gwt-unitCache/**,
-						**/WEB-INF/classes/themes/**,
-						**/WEB-INF/classes/widgetsets/**
-					</packagingExcludes>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
-		        </configuration>
+				</configuration>
 			</plugin>
 
 			<plugin>
 				<groupId>com.vaadin</groupId>
 				<artifactId>vaadin-maven-plugin</artifactId>
 				<version>${vaadin.plugin.version}</version>
-				<configuration>
-					<extraJvmArgs>-Xmx2048M -Xss1024k</extraJvmArgs>
-					<webappDirectory>${basedir}/src/main/webapp/VAADIN/widgetsets</webappDirectory>
-					<hostedWebapp>${basedir}/src/main/webapp/VAADIN/widgetsets</hostedWebapp>
-					<noServer>true</noServer>
-					<persistentunitcachedir>${basedir}/target/tmp/gwt-unitCache</persistentunitcachedir>
-					<compileReport>false</compileReport>
-					<strict>true</strict>
-					<runTarget>http://localhost:8080/</runTarget>
-				</configuration>
 				<executions>
 					<!-- You are free to mark this as permanently ignored in Eclipse -->
 					<execution>
@@ -193,9 +152,7 @@
 					<scanIntervalSeconds>2</scanIntervalSeconds>
 				</configuration>
 			</plugin>
-
 		</plugins>
-	
 	</build>
 
 	<profiles>
@@ -205,7 +162,6 @@
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
-			
 			<repositories>
 				<repository>
 					<id>vaadin-prereleases</id>
@@ -220,5 +176,4 @@
 			</pluginRepositories>
 		</profile>
 	</profiles>
-
 </project>
