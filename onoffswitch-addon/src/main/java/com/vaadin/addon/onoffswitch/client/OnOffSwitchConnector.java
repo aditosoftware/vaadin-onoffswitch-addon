@@ -6,6 +6,7 @@ import com.vaadin.addon.onoffswitch.OnOffSwitch;
 import com.vaadin.client.communication.RpcProxy;
 import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.client.ui.AbstractComponentConnector;
+import com.vaadin.client.ui.ConnectorFocusAndBlurHandler;
 import com.vaadin.shared.ui.Connect;
 
 // OnOffSwitch 서버 Component에 클라이언트 Widget 바인딩
@@ -15,15 +16,15 @@ public class OnOffSwitchConnector extends AbstractComponentConnector {
 
 	// 클라이언트 서버간 RPC Proxy 생성
 	OnOffSwitchServerRpc serverRpc = RpcProxy.create(OnOffSwitchServerRpc.class, this);
-	
-	// 클라이언트 RPC Receiver 구현 
+
+	// 클라이언트 RPC Receiver 구현
 	OnOffSwitchClientRpc clientRpc = new OnOffSwitchClientRpc() {
 		public void alert(String message) {
 			//com.google.gwt.user.client.Window.alert("gwt alert: "+message);
 			//jsniAlert("jsni alert: "+message);
 		}
 	};
-	
+
 	public static native void jsniAlert(String msg) /*-{
 	  $wnd.alert(msg);
 	}-*/;
@@ -40,7 +41,13 @@ public class OnOffSwitchConnector extends AbstractComponentConnector {
 			}
 		});
 	}
-	
+
+	@Override
+	protected void init () {
+		super.init();
+		ConnectorFocusAndBlurHandler.addHandlers(this);
+	}
+
 	@Override
 	public OnOffSwitchWidget getWidget() {
 		return (OnOffSwitchWidget) super.getWidget();
@@ -50,7 +57,7 @@ public class OnOffSwitchConnector extends AbstractComponentConnector {
 	public OnOffSwitchState getState() {
 		return (OnOffSwitchState) super.getState();
 	}
-	
+
 	@Override
 	public void onStateChanged(StateChangeEvent stateChangeEvent) {
 		super.onStateChanged(stateChangeEvent);
@@ -59,5 +66,4 @@ public class OnOffSwitchConnector extends AbstractComponentConnector {
         // 클라이언트 Widget의 Value 변경
         getWidget().setValue(checked, true);
 	}
-
 }
